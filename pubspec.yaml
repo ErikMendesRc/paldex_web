@@ -47,6 +47,8 @@ dependencies:
   responsive_builder: ^0.7.0
   cached_network_image: ^3.3.1
   url_launcher: ^6.2.4
+  stroke_text: ^0.0.2
+  diacritic: ^0.1.5
 
 dev_dependencies:
   flutter_test:
@@ -71,6 +73,8 @@ flutter:
   generate: true
   assets:
     - assets/images/
+    - assets/items/
+    - assets/workicons/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

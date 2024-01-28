@@ -8,7 +8,6 @@ import '../../models/pal_element.dart';
 import '../pal_element_utils.dart';
 
 class AppFonts {
-
   //TITULO
   static TextStyle title(BuildContext context) {
     return GoogleFonts.jockeyOne(
@@ -58,12 +57,27 @@ class AppFonts {
 
   //NOME DOS PALS
   static TextStyle nomePals(BuildContext context, List<PalElement> elementos) {
-  Color combinedColor = PalElementUtils.getCombinedElementColor(elementos);
+    Color combinedColor = PalElementUtils.getCombinedElementColor(elementos);
 
+    return GoogleFonts.jockeyOne(
+      fontSize: 20.0,
+      color: combinedColor,
+      textStyle: Theme.of(context).textTheme.bodyMedium,
+    );
+  }
+
+//NOME DOS PALS BRANCO
+  static TextStyle nomeWhite(BuildContext context) {
   return GoogleFonts.jockeyOne(
-    fontSize: 20.0,
-    color: combinedColor,
-    textStyle: Theme.of(context).textTheme.bodyMedium,
+    fontSize: 32.0,
+    color: AppColors.textWhite,
+  );
+}
+
+static TextStyle nickName(BuildContext context) {
+  return GoogleFonts.jockeyOne(
+    fontSize: 24.0,
+    color: AppColors.textWhite,
   );
 }
 
@@ -104,5 +118,28 @@ class AppFonts {
       textStyle: Theme.of(context).textTheme.bodyMedium,
     );
   }
-  
+
+  //NOME DO ATRIBUTO
+  static TextStyle attributeName(BuildContext context) {
+    return GoogleFonts.arimo(
+      fontSize: 18.0,
+      color: AppColors.textWhite
+    );
   }
+
+  //VALOR DO ATRIBUTO
+  static TextStyle attributeValue(BuildContext context) {
+    return GoogleFonts.arimo(
+      fontSize: 18.0,
+      color: AppColors.textWhite
+    );
+  }
+
+  static TextStyle dropItems(BuildContext context) {
+    return GoogleFonts.jockeyOne(
+      fontSize: 24.0,
+      color: AppColors.mainText,
+      textStyle: Theme.of(context).textTheme.bodyMedium,
+    );
+  }
+}

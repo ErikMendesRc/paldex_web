@@ -4,6 +4,7 @@ import 'package:paldex/utils/fonts/fonts.dart';
 import 'package:paldex/utils/texts/app_texts.dart';
 import 'package:paldex/utils/url_launcher.dart';
 import 'package:paldex/widgets/search_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../widgets/horizontal_pal_list.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,22 +18,30 @@ class HomeScreen extends StatelessWidget {
     final todosOsPal = AppFonts.todosOsPal(context);
 
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: AppColors.background,
       appBar: AppBar(
         title: Text(
           AppTexts.nomeApp,
           style: titleStyle,
         ),
         flexibleSpace: Container(
-          decoration: const BoxDecoration(gradient: AppColors.appBarGradient),
+          decoration: const BoxDecoration(color: AppColors.background),
         ),
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: Row(
               children: [
-                Text(AppTexts.ajudaDonate,
-                    style: AppFonts.textoDonate(context)),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.transparent, // Defina a cor de fundo do botão aqui
+                  ),
+                  onPressed: () {
+                    launchUrl(UrlLauncher.launchURL());
+                  },
+                  child: Text(AppTexts.ajudaDonate,
+                      style: AppFonts.textoDonate(context)),
+                ),
                 const SizedBox(width: 8),
                 IconButton(
                     color: Colors.white,

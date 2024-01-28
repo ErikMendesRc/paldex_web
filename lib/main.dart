@@ -30,9 +30,6 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Paldex - Encontre seu Pal Favorito',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
       initialRoute: '/homescreen',
       onGenerateRoute: (settings) {
         if (settings.name == '/palDetails') {
