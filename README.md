@@ -6,7 +6,7 @@ Paldex
 
 Um projeto Flutter para criar um website que exibe informações sobre o jogo Palworld.
 
-![Página Web - Em Breve](![image](https://github.com/ErikMendesRc/paldex_web/assets/29191714/8ad9e78f-e124-484f-904d-557eebad88cf))
+![image](https://github.com/ErikMendesRc/paldex_web/assets/29191714/b311bc1e-2623-4db0-9a27-0168b111523c)
 
 
 ### Versão e Número de Build:
