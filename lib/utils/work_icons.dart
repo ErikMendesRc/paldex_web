@@ -45,7 +45,7 @@ class WorkIcons extends StatelessWidget {
       'cortararvores': 'assets/workicons/madeira.png',
       'trabalhomanual': 'assets/workicons/mao.png',
       'manipulacao': 'assets/workicons/medicina.png',
-      'garimpo': 'assets/workicons/mina.png',
+      'mineracao': 'assets/workicons/mina.png',
       'plantio': 'assets/workicons/platacao.png',
       'geracaodeenergia': 'assets/workicons/raio.png',
       'coleta': 'assets/workicons/reuniao.png',

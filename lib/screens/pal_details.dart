@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:paldex/widgets/cards/card_workskills.dart';
 import 'package:paldex/widgets/cards/food_card.dart';
 import 'package:paldex/widgets/cards/horizontal_card_drop.dart';
+import 'package:paldex/widgets/cards/pal_active_skills_card.dart';
 import 'package:paldex/widgets/cards/pal_details_cards.dart';
 import '../utils/colors/colors.dart';
 import '../utils/fonts/fonts.dart';
@@ -95,6 +96,8 @@ class PalDetailsScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 8.0),
                     FoodCard(palID: palID),
+                    const SizedBox(height: 8.0),
+                    PalActiveSkillsCard(palID: palID)
                   ],
                 ),
               ),

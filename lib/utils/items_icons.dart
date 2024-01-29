@@ -55,7 +55,7 @@ class ItemsIcons extends StatelessWidget {
       'orgaodeignicao': 'assets/items/orgaoignicao.webp',
       'anelderesistenciaaofogo': 'assets/items/anelresistenciafogo.webp',
       'fluidodepal': 'assets/items/fluidopal.webp',
-      'anelderesistenciaaagua': 'assets/items/anelderesistenciaagua.webp',
+      'anelderesistenciaaagua': 'assets/items/anelresistenciaagua.webp',
       'anelderesistenciaaeletricidade': 'assets/items/neutro.webp',
       'cogumelo': 'assets/items/cogumelo.webp',
       'anelderesistenciaaterra': 'assets/items/anelterra.webp',

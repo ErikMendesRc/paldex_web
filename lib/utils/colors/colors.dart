@@ -8,6 +8,7 @@ class AppColors {
   static const Color secundaryColor = Color(0xFFE7D12A);
   static const Color whiteColor = Colors.white;
   static const Color background = Color.fromARGB(255, 55, 77, 116);
+  static const Color terciaryColor = Color.fromARGB(255, 174, 209, 255);
   
 
   //COLOR CARDS

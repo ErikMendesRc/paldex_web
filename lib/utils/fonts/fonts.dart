@@ -135,11 +135,35 @@ static TextStyle nickName(BuildContext context) {
     );
   }
 
+  //DROP ITENS
   static TextStyle dropItems(BuildContext context) {
     return GoogleFonts.jockeyOne(
       fontSize: 24.0,
       color: AppColors.mainText,
       textStyle: Theme.of(context).textTheme.bodyMedium,
     );
+  }
+
+  //TELA DETAILS: SKILL NAME
+  static TextStyle skillName(BuildContext context) {
+    return GoogleFonts.jockeyOne(
+      fontSize: 24.0,
+      color: AppColors.mainText,
+      textStyle: Theme.of(context).textTheme.bodyMedium,
+    );
+  }
+
+  // SKILL INFOS
+  static TextStyle skillInfos(BuildContext context) {
+    return GoogleFonts.arimo(
+      fontSize: 12.0,
+      color: AppColors.whiteColor,    );
+  }
+
+  //SKILL LEVEL
+  static TextStyle skillLevel(BuildContext context) {
+    return GoogleFonts.arimo(
+      fontSize: 23.0,
+      color: AppColors.mainText,    );
   }
 }

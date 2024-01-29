@@ -1,3 +1,5 @@
+import 'package:paldex/models/pal_active_skills.dart';
+
 import 'obtained_item.dart';
 import 'pal_element.dart';
 import 'work_skill.dart';
@@ -28,6 +30,7 @@ class Pal {
   final List<PalElement> elementos;
   final List<ObtainedItem> obtainedItems;
   final List<WorkSkill> workSkills;
+  final List<PalActiveSkills> activeSkills;
 
   Pal({
     required this.palId,
@@ -55,6 +58,7 @@ class Pal {
     required this.elementos,
     required this.obtainedItems,
     required this.workSkills,
+    required this.activeSkills
   });
 
   factory Pal.fromMap(Map<String, dynamic> map) {
@@ -84,6 +88,7 @@ class Pal {
       elementos: List<PalElement>.from(map['elements'].map((x) => PalElement.fromMap(x))),
       obtainedItems: List<ObtainedItem>.from(map['obtainedItems'].map((x) => ObtainedItem.fromMap(x))),
       workSkills: List<WorkSkill>.from(map['workSkills'].map((x) => WorkSkill.fromMap(x))),
+      activeSkills: List<PalActiveSkills>.from(map['activeSkills'].map((x) => PalActiveSkills.fromMap(x))),
     );
   }
 }

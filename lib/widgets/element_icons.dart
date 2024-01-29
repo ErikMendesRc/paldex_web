@@ -34,15 +34,15 @@ class ElementIcons extends StatelessWidget {
   String getElementIcon(String elemento) {
     // Mapeamento fornecido
     Map<String, String> elementoIconMap = {
-      'fire': 'assets/images/fire.webp',
-      'water': 'assets/images/water.webp',
-      'ground': 'assets/images/ground.png',
-      'dark': 'assets/images/dark.webp',
-      'dragon': 'assets/images/dragon.webp',
-      'grass': 'assets/images/grass.png',
-      'ice': 'assets/images/ice.webp',
-      'electric': 'assets/images/electric.png',
-      'neutral': 'assets/images/neutro.png',
+      'fire': 'assets/elements/fire.webp',
+      'water': 'assets/elements/water.webp',
+      'ground': 'assets/elements/ground.png',
+      'dark': 'assets/elements/dark.webp',
+      'dragon': 'assets/elements/dragon.webp',
+      'grass': 'assets/elements/grass.png',
+      'ice': 'assets/elements/ice.webp',
+      'electric': 'assets/elements/electric.png',
+      'neutral': 'assets/elements/neutro.png',
     };
 
     // Obtém o nome do elemento e converte para minúsculas para garantir correspondência
