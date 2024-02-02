@@ -63,15 +63,15 @@ class PalActiveSkillsCard extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Text(
-                            "Description: ${activeSkill.description}",
+                            "Descrição: ${activeSkill.description}",
                             style: infoSkill,
                           ),
                           Text(
-                            "Power: ${activeSkill.power}",
+                            "Poder: ${activeSkill.power}",
                             style: infoSkill,
                           ),
                           Text(
-                            "Cooldown: ${activeSkill.cooldown}",
+                            "Tempo de Recarga: ${activeSkill.cooldown}",
                             style: infoSkill,
                           ),
                           Text(
@@ -85,7 +85,7 @@ class PalActiveSkillsCard extends StatelessWidget {
                         style: skillLevel,
                       ),
                     ),
-                    Divider(
+                    const Divider(
                       color: AppColors.terciaryColor,
                       height: 0,
                     ),

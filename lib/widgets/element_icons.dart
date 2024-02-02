@@ -36,7 +36,7 @@ class ElementIcons extends StatelessWidget {
     Map<String, String> elementoIconMap = {
       'fire': 'assets/elements/fire.webp',
       'water': 'assets/elements/water.webp',
-      'ground': 'assets/elements/ground.png',
+      'ground': 'assets/elements/ground.webp',
       'dark': 'assets/elements/dark.webp',
       'dragon': 'assets/elements/dragon.webp',
       'grass': 'assets/elements/grass.png',

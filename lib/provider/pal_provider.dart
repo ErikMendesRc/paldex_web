@@ -20,6 +20,7 @@ class PalProvider with ChangeNotifier {
     try {
       final decodedResponse = await _apiClient.getAllPals();
       _pals = decodedResponse.map((palMap) => Pal.fromMap(palMap)).toList();
+      _updateFilteredPals();
       notifyListeners();
     } catch (e) {
       print('Error loading Pals: $e');
@@ -53,6 +54,77 @@ class PalProvider with ChangeNotifier {
     } catch (e) {
       print('Erro ao buscar Pals: $e');
       rethrow;
+    }
+  }
+
+  Future<void> getPalsByRarityAscending() async {
+    try {
+      final response = await _apiClient.getPalsByRarityAscending();
+      _filteredPals = response.map((palMap) => Pal.fromMap(palMap)).toList();
+      notifyListeners();
+    } catch (e) {
+      print('Error loading Pals by rarity (ascending): $e');
+      rethrow;
+    }
+  }
+
+  Future<void> getPalsByRarityDescending() async {
+    try {
+      final response = await _apiClient.getPalsByRarityDescending();
+      _filteredPals = response.map((palMap) => Pal.fromMap(palMap)).toList();
+      notifyListeners();
+    } catch (e) {
+      print('Error loading Pals by rarity (descending): $e');
+      rethrow;
+    }
+  }
+
+  // Métodos para filtrar Pals por número
+  Future<void> getPalsByNumberAscending() async {
+    try {
+      final response = await _apiClient.getPalsByNumberAscending();
+      _filteredPals = response.map((palMap) => Pal.fromMap(palMap)).toList();
+      notifyListeners();
+    } catch (e) {
+      print('Error loading Pals by number (ascending): $e');
+      rethrow;
+    }
+  }
+
+  Future<void> getPalsByNumberDescending() async {
+    try {
+      final response = await _apiClient.getPalsByNumberDescending();
+      _filteredPals = response.map((palMap) => Pal.fromMap(palMap)).toList();
+      notifyListeners();
+    } catch (e) {
+      print('Error loading Pals by number (descending): $e');
+      rethrow;
+    }
+  }
+
+  // Método para filtrar Pals por elemento
+  Future<void> getPalsByElement(String element) async {
+    try {
+      final response = await _apiClient.getPalsByElement(element);
+      _filteredPals = response.map((palMap) => Pal.fromMap(palMap)).toList();
+      notifyListeners();
+    } catch (e) {
+      print('Error loading Pals by element: $e');
+      rethrow;
+    }
+  }
+
+  void clearFilters() {
+    _filteredPals.clear();
+    _updateFilteredPals();
+    notifyListeners();
+  }
+
+  // Método para atualizar a lista filtrada
+  void _updateFilteredPals() {
+    if (_filteredPals.isNotEmpty) {
+      _filteredPals.clear();
+      _filteredPals.addAll(_pals);
     }
   }
 }

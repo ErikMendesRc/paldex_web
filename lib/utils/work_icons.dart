@@ -47,9 +47,10 @@ class WorkIcons extends StatelessWidget {
       'manipulacao': 'assets/workicons/medicina.png',
       'mineracao': 'assets/workicons/mina.png',
       'plantio': 'assets/workicons/platacao.png',
-      'geracaodeenergia': 'assets/workicons/raio.png',
+      'geradordeenergia': 'assets/workicons/raio.png',
       'coleta': 'assets/workicons/reuniao.png',
       'transporte': 'assets/workicons/transporte.png',
+      'extracaodeoleo': 'assets/workicons/extrairoleo.webp',
     };
 
     String nomeSkill = removeDiacritics(item.toLowerCase());

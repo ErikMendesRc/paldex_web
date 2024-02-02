@@ -17,6 +17,18 @@ class PalActiveSkills {
     required this.ranges,
     required this.skillLvl,
   });
+  
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'name': name,
+      'description': description,
+      'power': power,
+      'cooldown': cooldown,
+      'ranges': ranges,
+      'skillLvl': skillLvl,
+    };
+  }
 
   factory PalActiveSkills.fromMap(Map<String, dynamic> map) {
     return PalActiveSkills(

@@ -7,6 +7,13 @@ class PalElement {
     required this.elemento,
   });
 
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'elemento': elemento,
+    };
+  }
+
   factory PalElement.fromMap(Map<String, dynamic> map) {
     return PalElement(
       id: map['id'] ?? 0,

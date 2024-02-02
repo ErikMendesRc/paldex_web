@@ -10,7 +10,7 @@ import '../utils/texts/app_texts.dart';
 import '../utils/url_launcher.dart';
 
 class PalDetailsScreen extends StatelessWidget {
-  final int palID;
+  final int? palID;
 
   const PalDetailsScreen({Key? key, required this.palID}) : super(key: key);
 
@@ -67,7 +67,7 @@ class PalDetailsScreen extends StatelessWidget {
           children: [
             Expanded(
               flex: 2,
-              child: PalCardDetails(palID: palID),
+              child: PalCardDetails(palID: palID!),
             ),
             const SizedBox(width: 24.0),
             Expanded(
@@ -81,23 +81,23 @@ class PalDetailsScreen extends StatelessWidget {
                       style: dropItems,
                     ),
                     const SizedBox(height: 8.0),
-                    CardDropItems(palID: palID),
+                    CardDropItems(palID: palID!),
                     const SizedBox(height: 24.0),
                     Text(
                       AppTexts.habilidadeDeTrabalho,
                       style: dropItems,
                     ),
                     const SizedBox(height: 8.0),
-                    CardWorkSkills(palID: palID),
+                    CardWorkSkills(palID: palID!),
                     const SizedBox(height: 24.0),
                     Text(
                       AppTexts.quantidadeComida,
                       style: foods,
                     ),
                     const SizedBox(height: 8.0),
-                    FoodCard(palID: palID),
+                    FoodCard(palID: palID!),
                     const SizedBox(height: 8.0),
-                    PalActiveSkillsCard(palID: palID)
+                    PalActiveSkillsCard(palID: palID!)
                   ],
                 ),
               ),

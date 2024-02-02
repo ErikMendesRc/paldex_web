@@ -9,6 +9,14 @@ class WorkSkill {
     required this.skillLvl,
   });
 
+  Map<String, dynamic> toMap() {
+    return {
+      'palWorkSkillsId': palWorkSkillsId,
+      'habilidadeTrabalho': habilidadeTrabalho,
+      'skillLvl': skillLvl,
+    };
+  }
+
   factory WorkSkill.fromMap(Map<String, dynamic> map) {
     return WorkSkill(
       palWorkSkillsId: map['palWorkSkillsId'] ?? 0,

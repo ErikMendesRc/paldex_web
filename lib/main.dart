@@ -14,13 +14,13 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => PalProvider(apiClient: ApiClient(baseUrl: ApiConfig.baseUrl))),
       ],
-      child: MyApp(),
+      child: const Paltable(),
     ),
   );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Paltable extends StatelessWidget {
+  const Paltable({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +30,9 @@ class MyApp extends StatelessWidget {
       ),
       title: 'Paldex - Encontre seu Pal Favorito',
       debugShowCheckedModeBanner: false,
-      initialRoute: '/homescreen',
+      initialRoute: '/home',
       onGenerateRoute: (settings) {
-        if (settings.name == '/palDetails') {
+        if (settings.name == '/detalhes') {
           final args = settings.arguments as Map<String, dynamic>?;
 
           return MaterialPageRoute(
@@ -42,7 +42,7 @@ class MyApp extends StatelessWidget {
         return null;
       },
       routes: {
-        '/homescreen': (context) => const HomeScreen(),
+        '/home': (context) => const HomeScreen(),
       },
     );
   }

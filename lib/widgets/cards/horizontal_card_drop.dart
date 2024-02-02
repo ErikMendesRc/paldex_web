@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paldex/utils/colors/colors.dart';
 import 'package:paldex/utils/items_icons.dart';
 import 'package:provider/provider.dart';
 import '../../models/obtained_item.dart';
@@ -53,9 +54,9 @@ class CardDropItems extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: Column(
                 children: [
-                  if (firstRowItems.isNotEmpty) _buildRow(firstRowItems),
+                  if (firstRowItems.isNotEmpty) _buildRow(context, firstRowItems),
                   const SizedBox(height: 16),
-                  if (secondRowItems.isNotEmpty) _buildRow(secondRowItems),
+                  if (secondRowItems.isNotEmpty) _buildRow(context, secondRowItems),
                 ],
               ),
             ),
@@ -65,36 +66,42 @@ class CardDropItems extends StatelessWidget {
     );
   }
 
-  Widget _buildRow(List<ObtainedItem> items) {
+  Widget _buildRow(BuildContext context, List<ObtainedItem> items) {
     return Wrap(
       alignment: WrapAlignment.spaceBetween,
       children: items.map((item) {
-        return Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(15.0),
+        return Tooltip(
+          decoration: const BoxDecoration(
+            color: AppColors.background
           ),
-          elevation: 8,
-          child: Container(
-            width: 300,
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipOval(
-                  clipper: MyClipperIcons(),
-                  child: ItemsIcons(items: [item]),
-                ),
-                const SizedBox(height: 4),
-                _buildFlag('Chance: ${(item.dropChance * 100)}%', Colors.blue),
-                const SizedBox(width: 8.0),
-                Column(
-                  children: [
-                    _buildFlag('Drop: ${item.dropQuantity}', Colors.orange),
-                    const SizedBox(height: 8),
-                    if (item.bossOnly) _buildFlag('BOSS', Colors.red),
-                  ],
-                )
-              ],
+          message: item.itemName,
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(15.0),
+            ),
+            elevation: 8,
+            child: Container(
+              width: 300,
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipOval(
+                    clipper: MyClipperIcons(),
+                    child: ItemsIcons(items: [item]),
+                  ),
+                  const SizedBox(height: 4),
+                  _buildFlag('Chance: ${(item.dropChance * 100)}%', Colors.blue),
+                  const SizedBox(width: 8.0),
+                  Column(
+                    children: [
+                      _buildFlag('Drop: ${item.dropQuantity}', Colors.orange),
+                      const SizedBox(height: 8),
+                      if (item.bossOnly) _buildFlag('BOSS', Colors.red),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
         );

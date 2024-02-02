@@ -6,7 +6,6 @@ import 'package:paldex/utils/url_launcher.dart';
 import 'package:paldex/widgets/search_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../widgets/horizontal_pal_list.dart';
-
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key});
 
@@ -68,7 +67,6 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16.0),
             const SearchBarCustom(),
-            const SizedBox(height: 16.0),
             Text(
               AppTexts.todosPals,
               style: todosOsPal,

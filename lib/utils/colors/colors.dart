@@ -16,8 +16,10 @@ class AppColors {
   static const Color cardNeutral = Color.fromRGBO(167, 138, 134, 1);
   static const Color cardFire = Color.fromRGBO(255, 160, 26, 0.795);
   static const Color cardLeaf = Color.fromRGBO(135, 196, 84, 0.5);
-  static const Color cardEarth = Color.fromRGBO(141, 103, 98, 0.6);
+  static const Color cardEarth = Color.fromRGBO(92, 71, 57, 0.976);
   static const Color cardEletric = Color.fromRGBO(167, 167, 36, 0.855);
+  static const Color cardDark = Color.fromRGBO(54, 39, 97, 0.855);
+  static const Color cardDragon = Color.fromRGBO(141, 109, 226, 0.855);
 
   //TEXTS
   static const Color mainText = Color.fromARGB(255, 174, 209, 255);
@@ -51,6 +53,10 @@ class AppColors {
         return cardEarth;
       case 'Electric':
         return cardEletric;  
+      case 'Dark':
+        return cardDark;
+      case 'Dragon':
+        return cardDragon;
       default:
         return Colors.transparent; // Cor padrão ou transparente para casos não previstos
     }

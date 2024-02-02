@@ -80,4 +80,94 @@ class ApiClient {
       rethrow;
     }
   }
+
+  Future<List<dynamic>> getPalsByRarityAscending() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/paldex/pal/rarity/ascending'),
+      );
+
+      if (response.statusCode == 200) {
+        final decodedResponse = jsonDecode(utf8.decode(response.bodyBytes));
+        return decodedResponse;
+      } else {
+        throw Exception('Failed to load Pals by rarity (ascending)');
+      }
+    } catch (e) {
+      print('Error loading Pals by rarity (ascending): $e');
+      rethrow;
+    }
+  }
+
+  Future<List<dynamic>> getPalsByRarityDescending() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/paldex/pal/rarity/descending'),
+      );
+
+      if (response.statusCode == 200) {
+        final decodedResponse = jsonDecode(utf8.decode(response.bodyBytes));
+        return decodedResponse;
+      } else {
+        throw Exception('Failed to load Pals by rarity (descending)');
+      }
+    } catch (e) {
+      print('Error loading Pals by rarity (descending): $e');
+      rethrow;
+    }
+  }
+
+  Future<List<dynamic>> getPalsByNumberAscending() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/paldex/pal/number/ascending'),
+      );
+
+      if (response.statusCode == 200) {
+        final decodedResponse = jsonDecode(utf8.decode(response.bodyBytes));
+        return decodedResponse;
+      } else {
+        throw Exception('Failed to load Pals by number (ascending)');
+      }
+    } catch (e) {
+      print('Error loading Pals by number (ascending): $e');
+      rethrow;
+    }
+  }
+
+  Future<List<dynamic>> getPalsByNumberDescending() async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/paldex/pal/number/descending'),
+      );
+
+      if (response.statusCode == 200) {
+        final decodedResponse = jsonDecode(utf8.decode(response.bodyBytes));
+        return decodedResponse;
+      } else {
+        throw Exception('Failed to load Pals by number (descending)');
+      }
+    } catch (e) {
+      print('Error loading Pals by number (descending): $e');
+      rethrow;
+    }
+  }
+
+  Future<List<dynamic>> getPalsByElement(String element) async {
+    try {
+      final response = await http.get(
+        Uri.parse('$baseUrl/api/paldex/pal/element/$element'),
+      );
+
+      if (response.statusCode == 200) {
+        final decodedResponse = jsonDecode(utf8.decode(response.bodyBytes));
+        return decodedResponse;
+      } else {
+        throw Exception('Failed to load Pals by element');
+      }
+    } catch (e) {
+      print('Error loading Pals by element: $e');
+      rethrow;
+    }
+  }
 }

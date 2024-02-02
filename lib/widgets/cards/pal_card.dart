@@ -1,8 +1,9 @@
+import 'dart:html';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:paldex/utils/texts/app_texts.dart';
 import 'package:paldex/widgets/food_icon_vertical.dart';
-
 import '../../models/pal.dart';
 import '../../utils/fonts/fonts.dart';
 import '../../utils/pal_element_utils.dart';
@@ -31,7 +32,7 @@ class PalCard extends StatelessWidget {
       onTap: () {
         Navigator.pushNamed(
           context,
-          '/palDetails',
+          '/detalhes',
           arguments: {'palID': palID},
         );
       },

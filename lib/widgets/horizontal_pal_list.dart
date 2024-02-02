@@ -1,3 +1,6 @@
+import 'dart:convert';
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:paldex/models/pal.dart';
 import 'package:paldex/utils/texts/app_texts.dart';
@@ -14,17 +17,19 @@ class HorizontalPalList extends StatefulWidget {
 
 class _HorizontalPalListState extends State<HorizontalPalList> {
   bool noResultsFound = false;
+  late List<Pal> _filteredPals;
 
   @override
   void initState() {
-    super.initState();
     Provider.of<PalProvider>(context, listen: false).getAllPals();
+    _filteredPals = [];
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     final todosOsPal = AppFonts.todosOsPal(context);
-    
+
     return Consumer<PalProvider>(
       builder: (context, palProvider, child) {
         final List<Pal> pals = palProvider.filteredPals.isNotEmpty
@@ -32,21 +37,17 @@ class _HorizontalPalListState extends State<HorizontalPalList> {
             : palProvider.pals;
 
         if (pals.isEmpty) {
-          // Se não houver resultados, definimos a flag noResultsFound como true
           noResultsFound = true;
         } else {
           noResultsFound = false;
         }
 
         return FutureBuilder(
-          // Utilizando FutureBuilder para aguardar 5 segundos antes de mostrar o texto
-          future: Future.delayed(Duration(seconds: 1)),
+          future: Future.delayed(const Duration(milliseconds: 100)),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              // Mostrando o CircularProgressIndicator enquanto aguarda
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else {
-              // Após 5 segundos, decidimos se exibimos o texto ou a lista
               return noResultsFound
                   ? Center(
                       child: Text(
@@ -73,5 +74,28 @@ class _HorizontalPalListState extends State<HorizontalPalList> {
         );
       },
     );
+  }
+
+  void _updateFilteredPals(List<Pal> filteredPals) {
+    setState(() {
+      _filteredPals = filteredPals;
+    });
+    _savePalsToLocalStorage(filteredPals); // Salvar no LocalStorage
+  }
+
+  void _savePalsToLocalStorage(List<Pal> pals) {
+    final List<Map<String, dynamic>> palMaps = pals.map((pal) => pal.toMap()).toList();
+    final palJson = json.encode(palMaps);
+    html.window.localStorage['pals'] = palJson;
+  }
+
+  List<Pal> _loadPalsFromLocalStorage() {
+    final palJson = html.window.localStorage['pals'];
+    if (palJson != null) {
+      final List<dynamic> palList = json.decode(palJson);
+      return palList.map((json) => Pal.fromMap(json)).toList();
+    } else {
+      return [];
+    }
   }
 }

@@ -13,6 +13,16 @@ class ObtainedItem {
     required this.bossOnly,
   });
 
+  Map<String, dynamic> toMap() {
+    return {
+      'dropId': dropId,
+      'itemName': itemName,
+      'dropChance': dropChance,
+      'dropQuantity': dropQuantity,
+      'bossOnly': bossOnly,
+    };
+  }
+
   factory ObtainedItem.fromMap(Map<String, dynamic> map) {
     return ObtainedItem(
       dropId: map['dropId'] ?? 0,
