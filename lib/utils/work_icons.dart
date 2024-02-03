@@ -55,9 +55,6 @@ class WorkIcons extends StatelessWidget {
 
     String nomeSkill = removeDiacritics(item.toLowerCase());
     nomeSkill = nomeSkill.replaceAll(' ', '');
-    print(nomeSkill);
-
-    // Verifique se o elemento está mapeado, se não estiver, retorne um ícone padrão ou vazio
     return workSkillIconMap[nomeSkill] ?? 'assets/images/neutro.png';
   }
 }

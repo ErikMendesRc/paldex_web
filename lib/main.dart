@@ -28,7 +28,7 @@ class Paltable extends StatelessWidget {
       scrollBehavior: const MaterialScrollBehavior().copyWith(
         dragDevices: {PointerDeviceKind.mouse, PointerDeviceKind.touch},
       ),
-      title: 'Paldex - Encontre seu Pal Favorito',
+      title: 'Paltable Brasil',
       debugShowCheckedModeBanner: false,
       initialRoute: '/home',
       onGenerateRoute: (settings) {

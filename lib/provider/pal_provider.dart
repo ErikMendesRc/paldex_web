@@ -16,16 +16,28 @@ class PalProvider with ChangeNotifier {
 
   PalProvider({ApiClient? apiClient}) : _apiClient = apiClient!;
 
+  int _currentPage = 0;
+  final int _pageSize = 10;
+
   Future<void> getAllPals() async {
     try {
-      final decodedResponse = await _apiClient.getAllPals();
-      _pals = decodedResponse.map((palMap) => Pal.fromMap(palMap)).toList();
-      _updateFilteredPals();
+      final decodedResponse = await _apiClient.getAllPals(_currentPage, _pageSize);
+      final List<Pal> newPals = decodedResponse.map((palMap) => Pal.fromMap(palMap)).toList();
+      if (_currentPage == 0) {
+        _pals = newPals;
+      } else {
+        _pals.addAll(newPals);
+      }
       notifyListeners();
     } catch (e) {
       print('Error loading Pals: $e');
       rethrow;
     }
+  }
+
+  Future<void> loadMorePals() async {
+    _currentPage++;
+    await getAllPals();
   }
 
   Future<Pal> getPalById(int palId) async {

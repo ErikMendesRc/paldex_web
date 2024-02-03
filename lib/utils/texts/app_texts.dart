@@ -1,8 +1,8 @@
 class AppTexts {
 
-  static const String menssagemBemVindo = 'BEM VINDO À PALDEX!';
-  static const String saibaSobreSeuPalFavorito = 'Saiba tudo sobre seu pal favorito!';
-  static const String nomeApp = 'Paldex';
+  static const String menssagemBemVindo = 'BEM VINDO À PALTABLE!';
+  static const String saibaSobreSeuPalFavorito = 'Venha conhecer tudo sobre pal';
+  static const String nomeApp = 'Paltable';
   static const String todosPals = 'Todos os Pals';
 
   //TELA CARD INICIAL

@@ -1,6 +1,3 @@
-import 'dart:convert';
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:paldex/models/pal.dart';
 import 'package:paldex/utils/texts/app_texts.dart';
@@ -16,14 +13,13 @@ class HorizontalPalList extends StatefulWidget {
 }
 
 class _HorizontalPalListState extends State<HorizontalPalList> {
-  bool noResultsFound = false;
-  late List<Pal> _filteredPals;
+  late ScrollController _scrollController;
 
   @override
   void initState() {
-    Provider.of<PalProvider>(context, listen: false).getAllPals();
-    _filteredPals = [];
     super.initState();
+    _scrollController = ScrollController()..addListener(_scrollListener);
+    Provider.of<PalProvider>(context, listen: false).getAllPals();
   }
 
   @override
@@ -36,66 +32,48 @@ class _HorizontalPalListState extends State<HorizontalPalList> {
             ? palProvider.filteredPals
             : palProvider.pals;
 
-        if (pals.isEmpty) {
-          noResultsFound = true;
-        } else {
-          noResultsFound = false;
-        }
-
-        return FutureBuilder(
-          future: Future.delayed(const Duration(milliseconds: 100)),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Center(child: CircularProgressIndicator());
-            } else {
-              return noResultsFound
-                  ? Center(
-                      child: Text(
-                        AppTexts.naoEncontramosSeuPal,
-                        style: todosOsPal,
-                      ),
-                    )
-                  : SizedBox(
-                      height: 400.0,
-                      child: ListView.builder(
-                        scrollDirection: Axis.horizontal,
-                        itemCount: pals.length,
-                        itemBuilder: (context, index) {
-                          final Pal pal = pals[index];
-                          return Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: PalCard(pal: pal, palID: pal.palId),
-                          );
-                        },
-                      ),
-                    );
-            }
-          },
-        );
+        return pals.isEmpty
+            ? Center(
+                child: Text(
+                  AppTexts.naoEncontramosSeuPal,
+                  style: todosOsPal,
+                ),
+              )
+            : SizedBox(
+                height: 400.0,
+                child: ListView.builder(
+                  controller: _scrollController,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: pals.length + 1,
+                  itemBuilder: (context, index) {
+                    if (index < pals.length) {
+                      final Pal pal = pals[index];
+                      return Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: PalCard(pal: pal, palID: pal.palId),
+                      );
+                    } else {
+                      return _buildLoader(palProvider);
+                    }
+                  },
+                ),
+              );
       },
     );
   }
 
-  void _updateFilteredPals(List<Pal> filteredPals) {
-    setState(() {
-      _filteredPals = filteredPals;
-    });
-    _savePalsToLocalStorage(filteredPals); // Salvar no LocalStorage
-  }
+  Widget _buildLoader(PalProvider palProvider) {
+  return Center(
+    child: ElevatedButton(
+      onPressed: () => palProvider.loadMorePals(),
+      child: Text('Load More'),
+    ),
+  );
+}
 
-  void _savePalsToLocalStorage(List<Pal> pals) {
-    final List<Map<String, dynamic>> palMaps = pals.map((pal) => pal.toMap()).toList();
-    final palJson = json.encode(palMaps);
-    html.window.localStorage['pals'] = palJson;
-  }
-
-  List<Pal> _loadPalsFromLocalStorage() {
-    final palJson = html.window.localStorage['pals'];
-    if (palJson != null) {
-      final List<dynamic> palList = json.decode(palJson);
-      return palList.map((json) => Pal.fromMap(json)).toList();
-    } else {
-      return [];
+  void _scrollListener() {
+    if (_scrollController.position.extentAfter < 500) {
+      Provider.of<PalProvider>(context, listen: false).loadMorePals();
     }
   }
 }

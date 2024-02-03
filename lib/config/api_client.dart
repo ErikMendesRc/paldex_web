@@ -7,19 +7,17 @@ class ApiClient {
   final String baseUrl;
 
   ApiClient({required this.baseUrl});
-
   List<dynamic> palList = <dynamic>[];
 
-  Future<List<dynamic>> getAllPals() async {
+  Future<List<dynamic>> getAllPals(int page, int size) async {
     try {
       final response = await http.get(
-        Uri.parse('$baseUrl/api/paldex/pal/all'),
+        Uri.parse('$baseUrl/api/paldex/pal/all?page=$page&size=$size'),
       );
 
       if (response.statusCode == 200) {
         final decodedResponse = jsonDecode(utf8.decode(response.bodyBytes));
-        palList = List.from(decodedResponse);
-        return decodedResponse;
+        return decodedResponse['content'];
       } else {
         throw Exception('Failed to load Pals');
       }
